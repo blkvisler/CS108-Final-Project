@@ -3,10 +3,10 @@ A program that helps users find, update, add, and comment on websites/resources 
 
 # FEATURES:
   Homepage with menu of options  
-  Show all resources (with pictures and links to respecitive sites)  
+  Show all resources (with pictures and links to respective sites)  
   Show resources by specified topic  
   View website/resource page along with comments  
-  View comments in reverse chronilogical order for specified website  
+  View comments in reverse chronological order for specified website  
   Add a comment for specified website  
   Add a new resource  
   Update parts of the website information with a form that is prefilled with current content  
