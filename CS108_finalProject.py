@@ -7,7 +7,7 @@
 # DESCRIPTION: CS108 Final Project. A program that helps users find, update, add, and
 #  comment on websites/resources that show online design inspiration (from website
 #  design to mobile UI). Users can also search for content under topics
-#  such as "Design Inpsiration" and they can submit feedback on the website.
+#  such as "Design Inspiration" and they can submit feedback on the website.
 # NOTE: "website" and "resource" are used interchangeably
 #
 # FEATURES:
@@ -265,7 +265,7 @@ def getAllWebsites():
     ## Connect to database
     conn, cursor = getConnectionAndCursor()
 
-    ## SQL to retreive website database content
+    ## SQL to retrieve website database content
     sql = """
     SELECT siteID, siteTitle, url, description, topic, pictureURL, logoURL
     FROM websites
@@ -295,7 +295,7 @@ def getAllWebsitesByTopic(topic):
     ## Connect to database
     conn, cursor = getConnectionAndCursor()
 
-    ## SQL to retreive website database content
+    ## SQL to retrieve website database content
     sql = """
     SELECT siteID, siteTitle, url, description, topic, pictureURL, logoURL
     FROM websites
@@ -327,7 +327,7 @@ def getOneWebsite(siteID):
     ## Connect to database
     conn, cursor = getConnectionAndCursor()
 
-    ## SQL to retreive website database content
+    ## SQL to retrieve website database content
     sql = """
     SELECT siteID, siteTitle, url, description, topic, pictureURL, logoURL
     FROM websites
@@ -354,7 +354,7 @@ def getOneWebsite(siteID):
 def showOneWebsite(websiteData):
     """
     Presentation layer function to display a single website's information.
-    Will be shown along with respecitive comments (showComments() function).
+    Will be shown along with respective comments (showComments() function).
     """
 
     ## Show website information
@@ -475,13 +475,13 @@ def showWebsiteData(websiteData):
 def getComments(siteID):
     """
     Middleware function to get comments in reverse chronological order
-    from database for a choosen website.
+    from database for a chosen website.
     """
 
     ## Connect to database
     conn, cursor = getConnectionAndCursor()
 
-    ## SQL to retreive comments for choosen website in reverse chronological order
+    ## SQL to retrieve comments for chosen website in reverse chronological order
     sql = """
     SELECT commentID, siteID, time, fullname, comment
     FROM comments
@@ -508,7 +508,7 @@ def getComments(siteID):
 ################################################################################
 def showComments(comments, siteID):
     """
-    Presentation layer function to display comments for the choosen website.
+    Presentation layer function to display comments for the chosen website.
     Also includes a form to add a comment.
     """
 
@@ -701,7 +701,7 @@ def showAddAWebsiteForm():
 def addAWebsite(siteTitle, url, description, topic, pictureURL, logoURL):
     """
     Middleware function to add the new website/resource to the database. Parameters
-    are the retreived from the form fields of showAddAWebsiteForm.
+    are the retrieved from the form fields of showAddAWebsiteForm.
     """
 
     ## Connect to database
@@ -752,7 +752,7 @@ def updateWebsiteForm(websiteData):
     ## Unpack current resource data
     (siteID, siteTitle, url, description, topic, pictureURL, logoURL) = websiteData[0]
 
-    ## Show form partially filled out with some fields left unchanablge
+    ## Show form partially filled out with some fields left unchangeable
     print("""
     <!-- UPDATE WEBSITE FORM -->
     <h2>Update Website Information</h2>
@@ -836,7 +836,7 @@ def updateWebsite(siteID, url, description, pictureURL, logoURL):
     conn.close()
     cursor.close()
 
-    ## Return rowcount to notify user of (un)succesful attempt
+    ## Return rowcount to notify user of (un)successful attempt
     rowcount = cursor.rowcount
     return rowcount
 
@@ -884,7 +884,7 @@ def addComment(siteID, fullname, comment):
     conn.close()
     cursor.close()
 
-    ## Return rowcount to notify user of (un)succesful attempt
+    ## Return rowcount to notify user of (un)successful attempt
     rowcount = cursor.rowcount
     return rowcount
 
@@ -977,7 +977,7 @@ def showFeedbackForm():
 ################################################################################
 def createEmail(firstname, lastname, email, feedback, rating, vastResourceCollection, addingResources, viewingCommentary, sortingResroucesByTopic):
     """
-    Create the email usign the feedback provided from the feedback form
+    Create the email using the feedback provided from the feedback form
     """
 
     msg = """
@@ -1025,7 +1025,7 @@ def submitFeedback():
 def sendEmail(sender, recipient, msg):
     """
     Connect up to the SMTP server and send the message 
-    from the sender (site vistor) to the recipient (webmaster).
+    from the sender (site visitor) to the recipient (webmaster).
     """
 
     ## Create a mailer object 
@@ -1063,7 +1063,7 @@ if __name__ == "__main__":
 
 
 
-    ## SHOW RESOURCES BY TOPIC :: Obtain website data given a choosen topic and
+    ## SHOW RESOURCES BY TOPIC :: Obtain website data given a chosen topic and
     ##  present the data
     elif "showWebsitesByTopic" in form and "topic" in form:
         topic = form["topic"].value
@@ -1093,7 +1093,7 @@ if __name__ == "__main__":
             # Complete the Add Website
             rowcount = addAWebsite(siteTitle, url, description, topic, pictureURL, logoURL)
 
-            # Notify user of (un)succesful attempt
+            # Notify user of (un)successful attempt
             if rowcount == 1:
                 print("""
                 <p>Add Website Succeeded</p>
@@ -1107,7 +1107,7 @@ if __name__ == "__main__":
                 <p>Ensure That You Filled Out The Entire Form</p>
                 """)
 
-        # If not all form fields are completed, request the vistor fills them out
+        # If not all form fields are completed, request the visitor fills them out
         else:
             print("<p>Make sure all form fields are filled, thanks.</p>")
 
@@ -1138,7 +1138,7 @@ if __name__ == "__main__":
             # Complete the update
             rowcount = updateWebsite(siteID, url, description, pictureURL, logoURL)
 
-            # Notify user of (un)succesful attempt
+            # Notify user of (un)successful attempt
             if rowcount == 1:
                 print("""
                 <p>Update Website Succeeded</p>
@@ -1152,7 +1152,7 @@ if __name__ == "__main__":
                 <p>Ensure That You Filled Out All Form Fields Or Changed At Least One</p>
                 """)
 
-        # If not all form fields are completed, request the vistor fills them out
+        # If not all form fields are completed, request the visitor fills them out
         else:
             print("<p>Make sure all form fields are filled, thanks.</p>")
 
@@ -1163,8 +1163,8 @@ if __name__ == "__main__":
 
 
 
-    ## SHOW COMMENTARY AND WEBSITE DETAILS:: Show choosen website details and
-    ##  respecitve comments along with add a comment form
+    ## SHOW COMMENTARY AND WEBSITE DETAILS:: Show chosen website details and
+    ##  respective comments along with add a comment form
     elif "showCommentary" in form and "siteID" in form:
         siteID = form["siteID"].value
 
@@ -1190,7 +1190,7 @@ if __name__ == "__main__":
             # Complete the Add Comment
             rowcount = addComment(siteID, fullname, comment)
 
-            ## Notify user of (un)succesful attempt, allow them to return to resource page
+            ## Notify user of (un)successful attempt, allow them to return to resource page
             if rowcount == 1:
                 print("""
                 <p>Add Comment Succeeded</p>
@@ -1205,7 +1205,7 @@ if __name__ == "__main__":
                 <p>Ensure That You Filled Out The Entire Form</p>
                 """)
             
-        # If not all form fields are completed, request the vistor fills them out.
+        # If not all form fields are completed, request the visitor fills them out.
         #   Then reshow the Website Information with Comment Form and Comments
         else:
             print("<p>Make sure all form fields are filled, thanks.</p>")
@@ -1266,7 +1266,7 @@ if __name__ == "__main__":
             submitFeedback()
             
 
-        # If not all form fields are completed, request the vistor fills them out
+        # If not all form fields are completed, request the visitor fills them out
         else:
             print("<p>Make sure all form fields are filled, thanks.</p>")
             showFeedbackForm()
