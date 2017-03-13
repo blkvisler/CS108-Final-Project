@@ -1,6 +1,9 @@
 # CS108-Final-Project
 A program that helps users find, update, add, and comment on websites/resources that show online design inspiration (from website design to mobile UI). Users can also search for content under topics such as "Design Inpsiration" and they can submit feedback on the website.
 
+# Video Overview
+https://youtu.be/0MCvXPhZ9po
+
 # FEATURES:
   Homepage with menu of options  
   Show all resources (with pictures and links to respective sites)  
